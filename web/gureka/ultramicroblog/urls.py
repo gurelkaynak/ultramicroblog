@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, url
+from rest_framework.urlpatterns import format_suffix_patterns
+from . import views as ultramicroblog_views
 
 urlpatterns = patterns('ultramicroblog.views',
-    url(r'^$',
-        'list_view',
-        name="blog_index"),
-    url(r'^posts/(?P<post_id>\d+)/$',
-        'detail_view',
-        name="blog_detail"),
+    url(r'^$', ultramicroblog_views.PostList.as_view(), name="blog_index"),
+    url(r'^post/(?P<pk>\d+)/$', ultramicroblog_views.PostDetail.as_view(), name="post_detail"),
 )
+
+urlpatterns = format_suffix_patterns(urlpatterns)
