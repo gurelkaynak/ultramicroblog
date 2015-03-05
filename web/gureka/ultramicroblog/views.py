@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext, loader
-from myblog.models import Post
+from .models import Post
 
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"

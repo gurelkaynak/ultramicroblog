@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('myblog.views',
+urlpatterns = patterns('ultramicroblog.views',
     url(r'^$',
         'list_view',
         name="blog_index"),
