@@ -9,10 +9,12 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+import os, socket
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-if 'PRODUCTION' in os.environ and os.environ['PRODUCTION'] == "True":
+HOSTNAME = socket.gethostname()
+
+if HOSTNAME in ['li309-144']:
     from .prod_settings import *
 else:
     from .dev_settings import *
@@ -64,6 +66,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static-root/')
 
 REST_FRAMEWORK = {
     #'DEFAULT_AUTHENTICATION_CLASSES': (

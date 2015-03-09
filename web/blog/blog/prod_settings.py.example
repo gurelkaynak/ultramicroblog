@@ -27,3 +27,7 @@ DATABASES = {
 
 # Don't api requests from any host
 CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+    'api.yoursite'
+)
