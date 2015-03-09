@@ -1,5 +1,5 @@
 """
-Django settings for gureka project.
+Django settings for blog project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -29,7 +29,6 @@ INSTALLED_APPS = (
     'corsheaders',
     'rest_framework',
     #'oauth2_provider',
-    'gureka',
     'ultramicroblog',
 )
 
