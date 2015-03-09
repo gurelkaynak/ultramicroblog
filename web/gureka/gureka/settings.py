@@ -74,8 +74,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'DEFAULT_PAGE_SIZE': 1,
-    'PAGE_SIZE': 1
+    'DEFAULT_PAGE_SIZE': 5,
+    'PAGE_SIZE': 5
 }
 
 #OAUTH2_PROVIDER = {
@@ -83,5 +83,4 @@ REST_FRAMEWORK = {
     #'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'post_list': 'Access to your posts'}
 #}
 
-CORS_ORIGIN_ALLOW_ALL = True
 
