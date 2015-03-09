@@ -61,3 +61,4 @@ prod_settings.py
 dev_settings.py
 apache-dev.conf
 apache-production.conf
+static-root
