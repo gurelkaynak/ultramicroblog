@@ -12,20 +12,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-u#dv@b5(i7u)zyp882#@9mvz@g!4!&x=-%=q40z-7w70t(=cj'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
+if 'PRODUCTION' in os.environ and os.environ['PRODUCTION'] == "True":
+    from .prod_settings import *
+else:
+    from .dev_settings import *
 
 # Application definition
 
@@ -38,6 +28,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    #'oauth2_provider',
     'gureka',
     'ultramicroblog',
 )
@@ -57,16 +48,6 @@ ROOT_URLCONF = 'gureka.urls'
 
 WSGI_APPLICATION = 'gureka.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -85,10 +66,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#REST_FRAMEWORK = {
-    #'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    #]
+REST_FRAMEWORK = {
+    #'DEFAULT_AUTHENTICATION_CLASSES': (
+        #'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    #),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGE_SIZE': 1,
+    'PAGE_SIZE': 1
+}
+
+#OAUTH2_PROVIDER = {
+    ## this is the list of available scopes
+    #'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'post_list': 'Access to your posts'}
 #}
 
 CORS_ORIGIN_ALLOW_ALL = True

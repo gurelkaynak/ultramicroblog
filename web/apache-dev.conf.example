@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+    ServerAdmin admin@your-site
+    ServerName api.your-site
+
+    SetEnv PRODUCTION False
+
+    ErrorLog /var/log/apache2/error_your-site.log
+    CustomLog /var/log/apache2/access_your-site.log common
+
+    WSGIDaemonProcess your-site user=www-data group=www-data umask=0002 threads=5 python-path=/site-path:/env-path/lib/python2.7/site-packages/
+    WSGIProcessGroup your-site
+    WSGIScriptAlias / /site-path/web/wsgi.py
+    <Directory />
+        Options Indexes FollowSymLinks none
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+        ServerSignature On
+    </Directory>
+</VirtualHost>
