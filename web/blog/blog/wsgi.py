@@ -13,7 +13,7 @@ PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, '..'))
 
 sys.path.append(PROJECT_DIR)
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gureka.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blog.settings")
 
 from django.core.wsgi import get_wsgi_application
 _application = get_wsgi_application()
