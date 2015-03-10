@@ -75,8 +75,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'DEFAULT_PAGE_SIZE': 5,
+    'DEFAULT_PAGINATION_CLASS': 'ultramicroblog.pagination.PageNumberDetailedPagination',
     'PAGE_SIZE': 5
 }
 
