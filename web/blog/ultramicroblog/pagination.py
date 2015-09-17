@@ -4,9 +4,6 @@ from rest_framework.response import Response
 
 class PageNumberDetailedPagination(PageNumberPagination):
     def get_paginated_response(self, data):
-        #import pdb 
-        #pdb.set_trace()
-
         has_next = self.page.has_next()
         has_prev = self.page.has_previous()
         next_page_number = previous_page_number = self.page.number
